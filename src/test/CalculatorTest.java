@@ -1,10 +1,16 @@
 package test;
 
+import main.Calculator;
+
 public class CalculatorTest {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public void testEmptyString()
+	{
+		assertEquals(0, Calculator.add(""));
+	}
 
+	private void assertEquals(int i, int add) {
+		
 	}
 
 }
