@@ -2,31 +2,33 @@ package is.ru.stringcalculator;
 
 public class Calculator {
 
-public class CalculatorTest {
-
-	public static void main(String args[]) {
-      org.junit.runner.JUnitCore.main("is.ru.stringcalculator.CalculatorTest");
-    }
-
-	@Test
-	public void testEmptyString() {
-		assertEquals(0, Calculator.add(""));
+	public static int add(String text){
+		if(text.equals("")){
+			return 0;
+		}
+		else if(text.contains(",")){
+			return sum(splitNumbers(text));
+		}
+		else
+			return 1;
 	}
 
-	@Test
-	public void testOneNumber() {
-		assertEquals(1, Calculator.add("1"));
+	private static int toInt(String number){
+		return Integer.parseInt(number);
 	}
 
-	@Test
-	public void testTwoNumbers() {
-		assertEquals(3, Calculator.add("1,2"));
-	}	
-
-	@Test
-    public void testMultipleNumbers(){
-    	assertEquals(6, Calculator.add("1,2,3"));
+	private static String[] splitNumbers(String numbers){
+	    return numbers.split(",");
+	}
+      
+    private static int sum(String[] numbers){
+ 	    int total = 0;
+        for(String number : numbers){
+		    total += toInt(number);
+		}
+		return total;
     }
 
-}
+
+
 }

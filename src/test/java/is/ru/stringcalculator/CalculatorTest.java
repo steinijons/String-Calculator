@@ -5,6 +5,10 @@ import org.junit.Test;
 
 public class CalculatorTest {
 
+	public static void main(String args[]) {
+      org.junit.runner.JUnitCore.main("is.ru.stringcalculator.CalculatorTest");
+    }
+
 	@Test
 	public void testEmptyString() {
 		assertEquals(0, Calculator.add(""));
@@ -18,5 +22,11 @@ public class CalculatorTest {
 	@Test
 	public void testTwoNumbers() {
 		assertEquals(3, Calculator.add("1,2"));
-	}
+	}	
+
+	@Test
+    public void testMultipleNumbers(){
+    	assertEquals(6, Calculator.add("1,2,3"));
+    }
+
 }
