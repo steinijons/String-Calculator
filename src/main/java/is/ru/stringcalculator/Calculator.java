@@ -3,14 +3,21 @@ package is.ru.stringcalculator;
 public class Calculator {
 
 	public static int add(String text){
+		//int negValue = Integer.parseInt(text);
 		if(text.equals("")){
 			return 0;
 		}
 		else if(text.contains(",")){
 			return sum(splitNumbers(text));
 		}
+		else if(text.startsWith("//")){
+			return sum(splitByGiven(text));
+		}
+		/*else if(negValue < 0){
+				throw new ExceptionNegative();
+		}*/
 		else
-			return 1;
+			return toInt(text);
 	}
 
 	private static int toInt(String number){
@@ -29,6 +36,10 @@ public class Calculator {
 		return total;
     }
 
-
-
+    private static String[] splitByGiven(String numbers){
+	    String[] part = numbers.split("\n");
+		String delimiter = part[0].substring(2);
+		numbers = part[1];
+	    return numbers.split(delimiter);
+	}
 }
