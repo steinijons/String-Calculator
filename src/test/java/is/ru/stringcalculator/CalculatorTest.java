@@ -29,10 +29,21 @@ public class CalculatorTest {
     public void testDelimeterGiven(){
     	assertEquals(3, Calculator.add("//;\n1;2"));
     }
-    /*@Test
+
+    @Test(expected = RuntimeException.class)
+	public void whenNegativeNumberIsUsedThenRuntimeExceptionIsThrown() {
+    	Calculator.add("-3");
+	}
+
+    @Test
     public void testNegativeNumbersException(){
-    	assertEquals("Negatives not allowed", Calculator.add("-1"));
-    
-    }*/
+    	RuntimeException exception = null;
+	    try {
+	        Calculator.add("-3");
+	    } catch (RuntimeException e) {
+	        exception = e;
+	    }
+	    assertEquals("Negatives not allowed: [-3, -3]", exception.getMessage());
+	}    
 
 }

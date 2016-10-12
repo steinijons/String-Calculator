@@ -1,9 +1,11 @@
 package is.ru.stringcalculator;
 
+import java.util.ArrayList;
+
+
 public class Calculator {
 
 	public static int add(String text){
-		//int negValue = Integer.parseInt(text);
 		if(text.equals("")){
 			return 0;
 		}
@@ -13,9 +15,6 @@ public class Calculator {
 		else if(text.startsWith("//")){
 			return sum(splitByGiven(text));
 		}
-		/*else if(negValue < 0){
-				throw new ExceptionNegative();
-		}*/
 		else
 			return toInt(text);
 	}
@@ -30,8 +29,21 @@ public class Calculator {
       
     private static int sum(String[] numbers){
  	    int total = 0;
+ 	    ArrayList<Integer> NegNum = new ArrayList<Integer>();
         for(String number : numbers){
-		    total += toInt(number);
+		    int Numberint = toInt(number.trim());
+		    if(Numberint < 0)
+		    {
+		    	NegNum.add(Numberint);
+		    }
+		    else if(Numberint <= 1000)
+		    {
+		    	total += Numberint;
+		    }		    
+		}
+		if(NegNum.size() > 0)
+		{
+			throw new IllegalArgumentException("Negatives not allowed: " + NegNum.toString());
 		}
 		return total;
     }
@@ -42,4 +54,6 @@ public class Calculator {
 		numbers = part[1];
 	    return numbers.split(delimiter);
 	}
+
+
 }
