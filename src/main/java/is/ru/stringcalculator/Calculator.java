@@ -31,14 +31,14 @@ public class Calculator {
  	    int total = 0;
  	    ArrayList<Integer> NegNum = new ArrayList<Integer>();
         for(String number : numbers){
-		    int Numberint = toInt(number.trim());
+		    int Numberint = toInt(number);
 		    if(Numberint < 0)
 		    {
 		    	NegNum.add(Numberint);
 		    }
-		    else if(Numberint <= 1000)
+		    if(Numberint <= 1000)
 		    {
-		    	total += Numberint;
+		    	total += Numberint;	
 		    }		    
 		}
 		if(NegNum.size() > 0)
