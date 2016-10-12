@@ -30,7 +30,7 @@ public class CalculatorTest {
     	assertEquals(3, Calculator.add("//;\n1;2"));
     }
 
-    @Test(expected = RuntimeException.class)
+   /* @Test(expected = RuntimeException.class)
 	public void whenNegativeNumberIsUsedThenRuntimeExceptionIsThrown() {
     	Calculator.add("-3");
 	}
@@ -44,6 +44,11 @@ public class CalculatorTest {
 	        exception = e;
 	    }
 	    assertEquals("Negatives not allowed: [-3, -3]", exception.getMessage());
-	}    
+	} */   
+
+	 @Test
+        public void testIllegalNumBiggerThan1000(){
+                assertEquals(2, Calculator.add("1001,2"));
+    }
 
 }
